@@ -32,8 +32,8 @@
         }
 
         .container {
-            background: rgba(241, 216, 216, 0.85);
-            padding: 40px; border-radius: 30px;
+            background: rgba(244, 225, 225, 0.9);
+            padding: 35px; border-radius: 30px;
             backdrop-filter: blur(10px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             z-index: 10; max-width: 400px; width: 90%;
@@ -47,70 +47,58 @@
             border: 5px solid white; object-fit: cover; margin-bottom: 20px;
         }
 
-        h1 { color: #ff4757; font-size: 22px; }
+        h1 { color: #ff4757; font-size: 22px; margin-top: 0; }
         p { color: var(--text); font-size: 16px; line-height: 1.5; }
 
-        /* Chỉnh lại box chứa nút cho đàng hoàng */
         .btn-box {
-            display: flex; 
-            justify-content: center; 
-            gap: 20px; /* Khoảng cách giữa 2 nút */
-            margin-top: 30px; 
-            position: relative; 
-            min-height: 50px;
+            display: flex; justify-content: center; gap: 20px;
+            margin-top: 25px; min-height: 50px; position: relative;
         }
 
         .btn {
-            padding: 12px 20px; 
-            border: none; 
-            border-radius: 25px;
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: 0.3s;
-            white-space: nowrap; /* Không cho chữ xuống dòng */
+            padding: 12px 22px; border: none; border-radius: 25px;
+            cursor: pointer; font-weight: bold; transition: 0.3s;
         }
 
         #yesBtn, #giftBtn { background: #ff4757; color: white; }
+        #noBtn { background: #747d8c; color: white; position: relative; touch-action: none; }
         
-        /* Nút Không mặc định sẽ nằm bình thường trong dòng */
-        #noBtn { 
-            background: #747d8c; 
-            color: white; 
-            touch-action: none;
-            position: relative; /* Lúc đầu để relative cho ngay ngắn */
-        }
-        
-        .beating-heart {
-            font-size: 100px;
-            color: var(--heart-color);
-            display: inline-block;
-            animation: beat 0.8s infinite;
-            filter: drop-shadow(0 0 10px rgba(255, 71, 87, 0.5));
-            cursor: pointer;
-        }
-
-        @keyframes beat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.3); }
-            100% { transform: scale(1); }
-        }
-
         .wish-text {
             font-style: italic; color: #e84393;
-            margin-top: 20px; white-space: pre-wrap;
+            margin-top: 20px; white-space: pre-wrap; min-height: 100px;
+            text-align: left; font-size: 15px;
+        }
+
+        .birthday-video {
+            width: 100%; border-radius: 15px; margin: 10px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .beating-heart {
+            font-size: 100px; color: var(--heart-color);
+            display: inline-block; animation: beat 0.8s infinite;
+        }
+        @keyframes beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
 <body>
 
-    <audio id="myAudio" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    <audio id="audio2" loop>
+        <source src="https://cdn.discordapp.com/attachments/1465620577028149253/1465985127367577813/snaptt.me-34355886.mp3?ex=697b188b&is=6979c70b&hm=d62f56ff17fa95bafa4c9ae603c44a3a4bbb03a16345949459fdc46ac87853de&" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio3" loop>
+        <source src="https://cdn.discordapp.com/attachments/1465620577028149253/1465986103042641962/snaptt.me-96613452.mp3?ex=697b1973&is=6979c7f3&hm=2dedaee0644df6dba11ad66c590ecfc0c6b779b1ac74f7653dba8c6e414177a0&" type="audio/mpeg">
     </audio>
 
     <div id="screen1" class="container">
         <img src="https://i.postimg.cc/15svkSqT/retouch-2026012811240404.png" alt="Friend" class="avatar">
-        <h1>Hỡi ngừ con géi mặt quạo kia ơi! 🎂</h1>
-        <p>Hôm nay sinh nhựt cưng, Cưng có đồng ý tha lỗi cho sự "xinh gái" vượt mức của Chuỵ hăm?</p>
+        <h1>Hỡi ngừ con géi mặt quạo! 🎂</h1>
+        <p>Hôm nay sinh nhựt cưng, cưng có đồng ý tha lỗi cho sự "xinh gái" vượt mức của Chuỵ hăm?</p>
         <div class="btn-box">
             <button id="yesBtn" class="btn" onclick="startSurprise()">Xinh gái hăm ai bằng❤️</button>
             <button id="noBtn" class="btn">Bớt ảo tưởng đi moá</button>
@@ -119,20 +107,25 @@
 
     <div id="screen2" class="container">
         <h1>HAPPY BIRTHDAY! 🎉</h1>
-        <img src="https://i.postimg.cc/ht3MQ73x/IMG-20260128-113243.jpg" alt="Happy" style="width:100%; border-radius:15px;">
+        <video id="myVideo" class="birthday-video" loop muted playsinline>
+            <source src="https://cdn.discordapp.com/attachments/1465620577028149253/1465958729102131334/7476181278626.mp4?ex=697afff5&is=6979ae75&hm=4a31a70bdfe9e01f756f03368c6b71f2903907347fbf5e9687b18a50a9b7536a&" type="video/mp4">
+        </video>
         <div class="wish-text" id="typing"></div>
-        <button id="giftBtn" class="btn" style="margin-top: 25px; display: none;" onclick="showHeartScreen()">Nhấn dô đây nhận quà nè con quẻ 🎁</button>
+        <button id="giftBtn" class="btn" style="display: none;" onclick="showHeartScreen()">Nhấn dô đây nhận quà nè con quẻ 🎁</button>
     </div>
 
     <div id="screen3" class="container">
         <h1>YÊU CƯNG NHẤT TRÊN ĐỜI! 💖</h1>
         <div class="beating-heart">❤️</div>
         <p style="margin-top: 20px; font-weight: bold;">Món quà lớn nhất chính là trái tim của Chuỵ nè!</p>
-        <p style="font-size: 13px;">(Đủ làm cho em rơi nước méc chưa hẹ hẹ hẹ 😉)</p>
+        <p style="font-size: 13px;">(Đủ làm rơi nước méc chưa hẹ hẹ hẹ 😉)</p>
     </div>
 
     <script>
-        const audio = document.getElementById("myAudio");
+        const audio2 = document.getElementById("audio2");
+        const audio3 = document.getElementById("audio3");
+        const video = document.getElementById("myVideo");
+        const noBtn = document.getElementById('noBtn');
 
         function createHeart() {
             const heart = document.createElement('div');
@@ -145,33 +138,28 @@
         }
         setInterval(createHeart, 300);
 
-        const noBtn = document.getElementById('noBtn');
-
         function moveNo(e) {
             if (e) e.preventDefault();
-            
-            // Khi bắt đầu move, đổi từ relative sang fixed để nhảy khắp màn hình
             noBtn.style.position = 'fixed';
-            
-            const x = Math.random() * (window.innerWidth - 150);
+            const x = Math.random() * (window.innerWidth - 120);
             const y = Math.random() * (window.innerHeight - 50);
-            
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
             noBtn.style.zIndex = '999';
         }
-
         noBtn.addEventListener('mouseover', moveNo);
         noBtn.addEventListener('touchstart', moveNo);
-        noBtn.addEventListener('click', moveNo);
 
         function startSurprise() {
-            audio.play().catch(e => console.log("Audio play blocked"));
+            // Phát nhạc 1 khi nhấn nút màn hình 1
+            audio2.play().catch(e => console.log("Audio 2 blocked"));
+            video.play();
+
             document.getElementById('screen1').style.display = 'none';
             document.getElementById('screen2').style.display = 'block';
             confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
 
-            const text = "Chúc Khánh Linh tuổi mới: \n✨ Luôn xinh đẹp và thánh thiện \n💰 Tiền đầy túi, làm phú bà \n👯 Mãi là 'partner in crime' của mềnh nhé! \n\nTặng Khánh Linh ngàn cái ôm! 🤗";
+            const text = "Chúc Khánh Linh tuổi mới: \n✨ Luôn xinh đẹp và thánh thiện \n💰 Tiền đầy túi, làm phú bà \n👯 Mãi là 'partner in crime' của mềnh nhé! 🤗";
             let i = 0;
             function typeWriter() {
                 if (i < text.length) {
@@ -186,14 +174,13 @@
         }
 
         function showHeartScreen() {
+            // Tắt nhạc 1, phát nhạc 2 khi sang màn hình 3
+            audio2.pause();
+            audio3.play().catch(e => console.log("Audio 3 blocked"));
+
             document.getElementById('screen2').style.display = 'none';
             document.getElementById('screen3').style.display = 'block';
-            confetti({
-                particleCount: 100,
-                startVelocity: 30,
-                spread: 360,
-                origin: { x: Math.random(), y: Math.random() - 0.2 }
-            });
+            confetti({ particleCount: 100, spread: 160, origin: { y: 0.5 } });
         }
     </script>
 </body>
